@@ -51,29 +51,29 @@ int main()
 	mosquitto_loop_start(mosq);
 
 	while (1) {
-		int acc1 = read_raw(0x68, 1, 14, 1, 1);
+		int acc1 = read_raw(0x69, 4, 14, 1, 1);//canale 8
 		frame747.data[0] = acc1 >> 8;
 		frame747.data[1] = acc1;
-		int acc2 = read_raw(0x68, 2, 14, 1, 1);
+		int acc2 = read_raw(0x69, 3, 14, 1, 1);//canale7
 		frame747.data[2] = acc2 >> 8;
 		frame747.data[3] = acc2;
-		int steering = read_raw(0x68, 3, 14, 1, 1);
+		int steering = read_raw(0x68, 2, 14, 1, 1);//canale2
 		frame747.data[4] = steering >> 8;
 		frame747.data[5] = steering;
 		frame747.time = (unsigned int)millis();
 		frame747.id = 747;
 		send_Frame(frame747);
 
-		int FLdamp = read_raw(0x69, 1, 14, 1, 1);
+		int FLdamp = read_raw(0x69, 1, 14, 1, 1);//canale5
 		frame748.data[0] = FLdamp >> 8;
 		frame748.data[1] = FLdamp;
-		int FRdamp = read_raw(0x69, 2, 14, 1, 1);
+		int FRdamp = read_raw(0x69, 2, 14, 1, 1);//canale6
 		frame748.data[2] = FRdamp >> 8;
 		frame748.data[3] = FRdamp;
-		int RLdamp = read_raw(0x69, 3, 14, 1, 1);
+		int RLdamp = read_raw(0x68, 3, 14, 1, 1);//canale3
 		frame748.data[4] = RLdamp >> 8;
 		frame748.data[5] = RLdamp;
-		int RRdamp = read_raw(0x69, 4, 14, 1, 1);
+		int RRdamp = read_raw(0x68, 4, 14, 1, 1);//canale4
 		frame748.data[6] = RRdamp >> 8;
 		frame748.data[7] = RRdamp;
 		frame748.time = (unsigned int)millis();
