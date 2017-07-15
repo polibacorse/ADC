@@ -51,12 +51,12 @@ int main()
 	mosquitto_loop_start(mosq);
 
 	while (1) {
-		int acc1 = read_raw(0x69, 4, 14, 1, 1);//canale 8
-		frame747.data[0] = acc1 >> 8;
-		frame747.data[1] = acc1;
-		int acc2 = read_raw(0x69, 3, 14, 1, 1);//canale7
-		frame747.data[2] = acc2 >> 8;
-		frame747.data[3] = acc2;
+		int a1x = read_raw(0x69, 4, 14, 1, 1);//canale 8
+		frame747.data[0] = a1x >> 8;
+		frame747.data[1] = a1x;
+		int a1y = read_raw(0x69, 3, 14, 1, 1);//canale7
+		frame747.data[2] = a1y >> 8;
+		frame747.data[3] = a1y;
 		int steering = read_raw(0x68, 2, 14, 1, 1);//canale2
 		frame747.data[4] = steering >> 8;
 		frame747.data[5] = steering;
